@@ -17,11 +17,14 @@ import {HttpClient} from "@angular/common/http";
 export class WorkersComponent implements OnInit, AfterViewInit {
 
   displayedColumns: string[] = ['id', 'name', 'position', 'salary'];
-  dataSource: MatTableDataSource<any> | any; // позволяет определить, что dataSource является источником для нашей таблицы
+  dataSource: MatTableDataSource<any> | any; // lets us determine that the dataSource is the source for our table
+                                            // https://material.angular.io/components/table/overview
 
-  @ViewChild(MatPaginator) paginator: MatPaginator | any;
+  @ViewChild(MatPaginator) paginator: MatPaginator | any; // Angular Material paginator
+                                                         // https://material.angular.io/components/paginator/overview
 
-  constructor(private workersService: WorkersService,public dialog: MatDialog,
+  constructor(private workersService: WorkersService, public dialog: MatDialog,
+              // Angular Material Dialog https://material.angular.io/components/dialog/overview
               public http: HttpClient) {
   }
 
@@ -31,7 +34,9 @@ export class WorkersComponent implements OnInit, AfterViewInit {
 
 
   public getAndSetWorkersItems(): void {
+    // Subscribing to WorkersResponse changes
     this.workersService.getWorkersItems().subscribe((res: WorkersResponse[]) => {
+      // Push In-Memory-Data to our table
       this.dataSource = res;
     });
   }
@@ -41,24 +46,28 @@ export class WorkersComponent implements OnInit, AfterViewInit {
       this.dataSource = res;
     })
   }
-
+  // Angular Material file dialog; Use in workers.component.html
   public openDialog(method: 'edit' | 'add', dataToEdit?: any): void {
+    // Open dialog and depending on the method, we do the actions (edit/add)
     const dialogRef = this.dialog.open(WorkersAddModalComponent, {
       data: {
         method: method,
-        initialValue: dataToEdit
+        initialValue: dataToEdit // nullable
       }
     });
-
+    // Close dialog after action, or after clicking on a free area
     dialogRef.afterClosed().subscribe(result => {
+      // Get changed data
       this.getAndSetWorkersItems();
     });
   }
 
   ngAfterViewInit(): void {
+    // Get data and subscribe on changes
     this.workersService.getWorkersItems().subscribe(res => {
       const result = res;
       let arr: any[] = [];
+      // Fill the table
       result.forEach((el: any) => {
         const obj = {
           id: el.id,

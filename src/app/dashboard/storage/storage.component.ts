@@ -11,7 +11,7 @@ import {StorageService} from "../../shared/service/storage.service";
 export class StorageComponent implements OnInit, AfterViewInit {
 
   displayedColumns: string[] = ['id', 'title', 'count', 'supplier'];
-  dataSource: MatTableDataSource<any> | any; // позволяет определить, что dataSource является источником для нашей таблицы
+  dataSource: MatTableDataSource<any> | any; // lets us determine that the dataSource is the source for our table
 
   @ViewChild(MatPaginator) paginator: MatPaginator | any;
 

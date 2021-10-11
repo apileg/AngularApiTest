@@ -23,14 +23,18 @@ export class WorkersAddModalComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               public dialogRef: MatDialogRef<WorkersAddModalComponent>,
-              @Inject(`MAT_DIALOG_DATA`) public data: any,
-              private notifierService: NotifierService,
+              @Inject(MAT_DIALOG_DATA) public data: any, // To access the data in your dialog component, you have to
+                                                          // use the MAT_DIALOG_DATA injection token
+                                                         // https://material.angular.io/components/dialog/overview
+              private notifierService: NotifierService, // NotifierService
+                                                       // https://www.npmjs.com/package/angular-notifier
               private workersService: WorkersService) {
   }
-
+  // The edit form must be immediately filled in with the required field, therefore if method is here
   ngOnInit(): void {
     if (this.data.method === 'edit') {
       this.addWorkersForm = this.data.initialValue.id;
+      // addWorkersFrom field = table field value
       this.addWorkersForm.controls.name.setValue(this.data.initialValue.name);
       this.addWorkersForm.controls.surname.setValue(this.data.initialValue.surname);
       this.addWorkersForm.controls.position.setValue(this.data.initialValue.position);
@@ -47,7 +51,7 @@ export class WorkersAddModalComponent implements OnInit {
             this.dialogRef.close();
           },
           (error) => {
-
+            // TODO:
           })
     } else {
       this.workersService.editWorkersItem(this.workersItemId, this.addWorkersForm.value)
@@ -57,9 +61,8 @@ export class WorkersAddModalComponent implements OnInit {
             this.dialogRef.close();
           },
           (error) => {
-
+            // TODO:
           })
     }
   }
-
 }
