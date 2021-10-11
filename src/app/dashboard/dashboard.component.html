@@ -1,0 +1,20 @@
+<div class="dashboard-wrapper">
+  <div class="header">
+    <h1>{{'dashboard' | uppercase}}</h1>
+  </div>
+  <nav mat-tab-nav-bar>
+    <a mat-tab-link
+       *ngFor="let link of navLinks"
+       [routerLink]="link.link"
+       routerLinkActive #rla="routerLinkActive"
+       [active]="rla.isActive"
+    >
+      {{link.label}}
+    </a>
+    <button mat-button (click)="logoutFunction()">Log out</button>
+  </nav>
+
+  <div class="main-wrapper">
+    <router-outlet></router-outlet>
+  </div>
+</div>

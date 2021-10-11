@@ -1,0 +1,18 @@
+table {
+  width: 100%;
+  text-align: center  ;
+}
+.storage-page-wrapper{
+  padding: 40px;
+  overflow: auto;
+  position: relative;
+}
+th.mat-header-cell{
+  text-align: center;
+}
+.add-button{
+  position: absolute;
+  bottom: 0px;
+  right: 12px;
+  top: 311px;
+}

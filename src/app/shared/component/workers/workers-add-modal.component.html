@@ -1,0 +1,27 @@
+<div class="modal-wrapper">
+  <form action="" [formGroup]="addWorkersForm" style="display: inline-flex;flex-direction: column">
+    <mat-form-field>
+      <input formControlName="name" required type="text" matInput placeholder="Name: ">
+    </mat-form-field>
+    <mat-form-field>
+      <input formControlName="surname" required type="text" matInput placeholder="Surname: ">
+    </mat-form-field>
+    <mat-form-field>
+      <input formControlName="position" required type="text" matInput placeholder="Position: ">
+    </mat-form-field>
+    <mat-form-field>
+      <input formControlName="salary" required type="number" matInput placeholder="Salary: ">
+    </mat-form-field>
+  </form>
+  <button mat-raised-button
+          *ngIf="data.method === 'add'"
+          (click)="workersModalAction('add')"
+          [disabled]="addWorkersForm.invalid">
+    ADD STORAGE ITEM
+  </button>
+  <button mat-raised-button *ngIf="data.method === 'edit'"
+          (click)="workersModalAction('edit')"
+          [disabled]="addWorkersForm.invalid">
+    EDIT STORAGE ITEM
+  </button>
+</div>
