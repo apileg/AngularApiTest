@@ -3,7 +3,7 @@ import {FormBuilder, Validators} from "@angular/forms";
 
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {NotifierService} from "angular-notifier";
-import {WorkersService} from "../../service/workers.service";
+import {WorkersService} from "../../service/api/workers.service";
 
 @Component({
   selector: 'app-add-modal',
@@ -16,7 +16,7 @@ export class WorkersAddModalComponent implements OnInit {
     name: ['', Validators.required],
     surname: ['', Validators.required],
     position: ['', Validators.required],
-    salary: ['', Validators.required],
+    salary: ['', Validators.min(0)],
   });
 
   public workersItemId: number = 0;

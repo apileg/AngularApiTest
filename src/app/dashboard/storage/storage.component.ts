@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
-import {StorageService} from "../../shared/service/storage.service";
+import {StorageService} from "../../shared/service/api/storage.service";
 
 @Component({
   selector: 'app-storage',

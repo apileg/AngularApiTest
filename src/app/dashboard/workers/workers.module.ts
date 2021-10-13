@@ -5,7 +5,7 @@ import {RouterModule, Routes} from "@angular/router";
 import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {InMemoryWebApiModule} from "angular-in-memory-web-api";
-import {InMemoryDataService} from "../../shared/service/in-memory-data.service";
+import {WorkersInMemoryDataService} from "../../shared/service/in-memory-data-service/workers-in-memory-data.service";
 import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import {MatFormFieldModule} from "@angular/material/form-field";

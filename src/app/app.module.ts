@@ -8,8 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {InMemoryWebApiModule} from "angular-in-memory-web-api";
-import {InMemoryDataService} from "./shared/service/in-memory-data.service";
-import { WorkersAddModalComponent } from './shared/component/workers/workers-add-modal.component';
+import {WorkersInMemoryDataService} from "./shared/service/in-memory-data-service/workers-in-memory-data.service";
 import {NotifierModule} from "angular-notifier";
 import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
@@ -42,7 +41,7 @@ const routes: Routes = [
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
-    InMemoryWebApiModule.forRoot(InMemoryDataService),
+    InMemoryWebApiModule.forRoot(WorkersInMemoryDataService),
     NotifierModule,
     MatButtonModule,
     MatInputModule,

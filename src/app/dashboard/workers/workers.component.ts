@@ -4,10 +4,11 @@ import {WorkersAddModalComponent} from "../../shared/component/workers/workers-a
 import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
-import {WorkersService} from "../../shared/service/workers.service";
+import {WorkersService} from "../../shared/service/api/workers.service";
 import {MatDialog} from "@angular/material/dialog";
-import {WorkersResponse} from "../../shared/interface/interfaces";
+import {Workers, WorkersResponse} from "../../shared/interface/interfaces";
 import {HttpClient} from "@angular/common/http";
+import {WorkersInMemoryDataService} from "../../shared/service/in-memory-data-service/workers-in-memory-data.service";
 
 @Component({
   selector: 'app-workers',
@@ -25,7 +26,9 @@ export class WorkersComponent implements OnInit, AfterViewInit {
 
   constructor(private workersService: WorkersService, public dialog: MatDialog,
               // Angular Material Dialog https://material.angular.io/components/dialog/overview
-              public http: HttpClient) {
+              public http: HttpClient,
+              public workersDataService: WorkersInMemoryDataService,
+              ) {
   }
 
   ngOnInit(): void {

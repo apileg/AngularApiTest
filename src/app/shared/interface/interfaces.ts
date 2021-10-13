@@ -1,14 +1,15 @@
 export interface StorageResponse {
-  results: Storage[],
+  storage: Storage[],
 }
 
 export interface WorkersResponse {
-  results: Workers[],
+  workers: Workers[],
 }
 
 export interface Workers {
   id: number,
   name: string,
+  surname: string,
   position: string,
   salary: number,
 }
